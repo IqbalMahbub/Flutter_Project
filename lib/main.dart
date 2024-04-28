@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
+//import 'dart:ui';
 void main(){
   runApp(myApp());
 }
@@ -16,8 +16,23 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreen,
-      body: Center(child: Text('Hello World8')),
+      backgroundColor: Colors.black,
+      body: Center(
+
+          child: Text('Hello iqbal mahbub,whats your favorite colour .',
+            textAlign: TextAlign.center,
+            maxLines: 3,
+            style: TextStyle(
+            color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            //backgroundColor: Colors.purpleAccent,
+            decoration: TextDecoration.underline,
+            wordSpacing: 4,
+            letterSpacing: 2,
+              overflow: TextOverflow.ellipsis,
+
+          ),)),
     );
   }
 }
