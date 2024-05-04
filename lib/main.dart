@@ -46,7 +46,22 @@ class homeScreen extends StatelessWidget {
             letterSpacing: 2,
           ),
         ),
-        Text('I love you'),
+        RichText(
+            text: TextSpan(
+                text: 'Hello ',
+                style: TextStyle(
+                    fontSize: 30, color: Colors.yellowAccent, wordSpacing: 6),
+                children: [
+              TextSpan(
+                  text: 'from ',
+                  style: TextStyle(color: Colors.greenAccent.shade700)),
+              TextSpan(
+                  text: 'Ostad ',
+                  style: TextStyle(
+                      decoration: TextDecoration.overline,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red.shade700))
+            ])),
         ElevatedButton(
             onPressed: () {
               showDialog(
@@ -64,7 +79,7 @@ class homeScreen extends StatelessWidget {
                     );
                   });
             },
-            child: Text('Tap')),
+            child: Text('Tap', style: TextStyle(fontSize: 32))),
         ElevatedButton(
             onPressed: () {
               showModalBottomSheet(
