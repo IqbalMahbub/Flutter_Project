@@ -21,88 +21,8 @@ class homeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(color: Colors.yellow, Icons.home),
-        title: Text('Home',
-            style: TextStyle(
-              color: Colors.red,
-              fontSize: 20,
-            )),
+        title: Text('Home'),
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text(
-          'Iqbal',
-          style: TextStyle(
-            fontSize: 35,
-            color: Colors.cyan,
-            wordSpacing: 2,
-            letterSpacing: 2,
-          ),
-        ),
-        Text(
-          'Mahbub',
-          style: TextStyle(
-            fontSize: 35,
-            color: Colors.cyan,
-            wordSpacing: 2,
-            letterSpacing: 2,
-          ),
-        ),
-        RichText(
-            text: TextSpan(
-                text: 'Hello ',
-                style: TextStyle(
-                    fontSize: 30, color: Colors.yellowAccent, wordSpacing: 6),
-                children: [
-              TextSpan(
-                  text: 'from ',
-                  style: TextStyle(color: Colors.greenAccent.shade700)),
-              TextSpan(
-                  text: 'Ostad ',
-                  style: TextStyle(
-                      decoration: TextDecoration.overline,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red.shade700))
-            ])),
-        ElevatedButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text('Massage'),
-                      content: Text('Welcome to my app'),
-                      actions: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Cancel'),
-                        ),
-                      ],
-                    );
-                  });
-            },
-            child: Text('Tap', style: TextStyle(fontSize: 32))),
-        ElevatedButton(
-            onPressed: () {
-              showModalBottomSheet(
-                  isDismissible: false,
-                  backgroundColor: Colors.purpleAccent,
-                  barrierColor: Colors.pink.shade900,
-                  context: context,
-                  builder: (context) {
-                    return Column(
-                      children: [
-                        Text('Registration my app'),
-                        Text('Subscribe my chanel'),
-                      ],
-                    );
-                  });
-            },
-            child: Text(
-              'Todo Information',
-              style: TextStyle(fontSize: 32),
-            ))
-        //Image.asset('img/iqbal.jpg'),
-      ]),
     );
   }
 }
