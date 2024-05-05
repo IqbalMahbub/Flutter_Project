@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'dart:ui';
+//import 'dart:ui';
 
 void main() {
   runApp(myApp());
@@ -18,6 +18,8 @@ class myApp extends StatelessWidget {
 }
 
 class homeScreen extends StatelessWidget {
+  TextEditingController searchTextFileController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +75,20 @@ class homeScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: searchTextFileController,
+                onTap: () {
+                  print('Taped');
+                },
+                keyboardType: TextInputType.number,
+                onChanged: (String input) {
+                  print(input);
+                },
+                textInputAction: TextInputAction.done,
+                onSubmitted: (String value) {
+                  print(searchTextFileController.text);
+                  searchTextFileController.clear();
+                },
+                obscureText: true,
                 decoration: InputDecoration(
                   enabled: true,
                   hintText: 'Enter your Name',
@@ -96,7 +112,7 @@ class homeScreen extends StatelessWidget {
                     style: BorderStyle.solid,
                   )),
                 ),
-              )
+              ),
             ],
           ),
         ));
