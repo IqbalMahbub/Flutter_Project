@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'dart:ui';
 
@@ -91,6 +92,8 @@ class homeScreen extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   enabled: true,
+                  prefixIcon: Icon(Icons.add),
+                  suffixIcon: Icon(Icons.remove_red_eye_rounded),
                   hintText: 'Enter your Name',
                   label: Text('Name'),
                   border: OutlineInputBorder(
@@ -112,6 +115,45 @@ class homeScreen extends StatelessWidget {
                     style: BorderStyle.solid,
                   )),
                 ),
+              ),
+              InkWell(
+                splashColor: Colors.indigo.shade900,
+                highlightColor: Colors.green,
+                radius: 10,
+                onTap: () {
+                  print('On tap detected');
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Hello!',
+                    style: TextStyle(fontSize: 50),
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+                  //padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(60),
+                          topRight: Radius.elliptical(30, 30),
+                          bottomLeft: Radius.circular(60),
+                          bottomRight: Radius.circular(50)),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.green,
+                            blurRadius: 10,
+                            offset: Offset(8, 10))
+                      ]),
+                  // color: Colors.redAccent,
+                  height: 300,
+                  width: 300,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  print('on tap detected');
+                },
+                child: Text('text'),
               ),
             ],
           ),
