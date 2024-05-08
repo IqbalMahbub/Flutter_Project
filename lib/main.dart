@@ -74,6 +74,12 @@ class homeScreen extends StatelessWidget {
                   Icons.add,
                 ),
               ),
+              FloatingActionButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.add,
+                ),
+              ),
               TextField(
                 controller: searchTextFileController,
                 onTap: () {
