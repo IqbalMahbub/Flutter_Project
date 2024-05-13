@@ -195,7 +195,11 @@ class HomeScreen extends StatelessWidget {
                       backgroundImage: AssetImage('img/iqbal.jpg'),
                     ),
                   ),
-                  TextField()
+                  TextField(
+                    decoration: InputDecoration(
+                        labelText: 'Whats on your '
+                            'mind?'),
+                  )
                 ],
               )
             ])));
