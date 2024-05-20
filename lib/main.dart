@@ -71,17 +71,24 @@ class _HomeActivityState extends State<HomeActivity> {
         //             "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
         //       ),
         //     ),
-        body: SizedBox(
-          width: 100,
-          child: AspectRatio(
-            aspectRatio: 2 / 5,
-            child: FractionallySizedBox(
-              heightFactor: 100,
-              widthFactor: 10,
-              alignment: Alignment.topLeft,
-              child: Text(
-                  "fghjkl;dsfdgfhgjhkjlk fgfhgjhgfdsetyhjkghgfgdfhjhsfhfjfh"),
-            ),
+        body:
+            // SizedBox(
+            //   width: 100,
+            //   child: AspectRatio(
+            //     aspectRatio: 2 / 5,
+            //     child: FractionallySizedBox(
+            //       heightFactor: 100,
+            //       widthFactor: 10,
+            //       alignment: Alignment.topLeft,
+            //       child: Text(
+            //           "fghjkl;dsfdgfhgjhkjlk fgfhgjhgfdsetyhjkghgfgdfhjhsfhfjfh"),
+            //     ),
+            //   ),
+            // )
+            AspectRatio(
+          aspectRatio: 2 / 5,
+          child: Container(
+            color: Colors.blue,
           ),
         ));
   }
