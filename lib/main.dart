@@ -32,8 +32,7 @@ class _HomeActivityState extends State<HomeActivity> {
       ),
       body: Column(
         children: [
-          Flexible(
-            fit: FlexFit.tight,
+          Expanded(
             flex: 3,
             child: Container(
               height: 100,
@@ -43,8 +42,7 @@ class _HomeActivityState extends State<HomeActivity> {
                   "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
             ),
           ),
-          Flexible(
-            fit: FlexFit.tight,
+          Expanded(
             flex: 2,
             child: Container(
               height: 100,
@@ -54,8 +52,7 @@ class _HomeActivityState extends State<HomeActivity> {
                   "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
             ),
           ),
-          Flexible(
-            fit: FlexFit.tight,
+          Expanded(
             flex: 5,
             child: Container(
               height: 100,
@@ -65,8 +62,7 @@ class _HomeActivityState extends State<HomeActivity> {
                   "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
             ),
           ),
-          Flexible(
-            fit: FlexFit.tight,
+          Expanded(
             flex: 3,
             child: Container(
               height: 100,
