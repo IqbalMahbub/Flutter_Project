@@ -1,95 +1,66 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Myapp());
 }
 
-class MyApp extends StatelessWidget {
+class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeActivity(),
+    return MaterialApp(
+      title: 'MyApp',
+      theme: ThemeData(colorSchemeSeed: Colors.blueAccent),
+      home: const HomeScreen(),
     );
   }
 }
 
-class HomeActivity extends StatefulWidget {
-  const HomeActivity({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomeActivity> createState() => _HomeActivityState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeActivityState extends State<HomeActivity> {
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  List<Widget> screen = [
+    Text('Home'),
+    Text('Prfile'),
+    Text('Search'),
+    Text('Setting'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: const Icon(Icons.home),
-          title: const Text('Home'),
-        ),
-        // body: Column(
-        //   children: [
-        //     Expanded(
-        //       flex: 3,
-        //       child: Container(
-        //         height: 100,
-        //         width: double.infinity,
-        //         color: Colors.blueAccent,
-        //         child: Text("hfjxvj "
-        //             "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
-        //       ),
-        //     ),
-        //     Expanded(
-        //       flex: 2,
-        //       child: Container(
-        //         height: 100,
-        //         width: double.infinity,
-        //         color: Colors.pink,
-        //         child: Text("hfjxvj "
-        //             "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
-        //       ),
-        //     ),
-        //     Expanded(
-        //       flex: 5,
-        //       child: Container(
-        //         height: 100,
-        //         width: double.infinity,
-        //         color: Colors.green,
-        //         child: Text("hfjxvj "
-        //             "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
-        //       ),
-        //     ),
-        //     Expanded(
-        //       flex: 3,
-        //       child: SizedBox(
-        //         height: 100,
-        //         width: double.infinity,
-        //         child: Text("hfjxvj "
-        //             "kvkjdvdvdvdvdvdsfdfkhjgfddgkjkhjgfdsdfdhjhjkl;kljkhjghfdfssa"),
-        //       ),
-        //     ),
-        body:
-            // SizedBox(
-            //   width: 100,
-            //   child: AspectRatio(
-            //     aspectRatio: 2 / 5,
-            //     child: FractionallySizedBox(
-            //       heightFactor: 100,
-            //       widthFactor: 10,
-            //       alignment: Alignment.topLeft,
-            //       child: Text(
-            //           "fghjkl;dsfdgfhgjhkjlk fgfhgjhgfdsetyhjkghgfgdfhjhsfhfjfh"),
-            //     ),
-            //   ),
-            // )
-            AspectRatio(
-          aspectRatio: 2 / 5,
-          child: Container(
-            color: Colors.blue,
-          ),
-        ));
+      appBar: AppBar(
+        leading: Icon(Icons.home),
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: screen[_selectedIndex],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueAccent,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        selectedLabelStyle: TextStyle(),
+        showUnselectedLabels: true,
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          _selectedIndex = index;
+          print(index);
+          setState(() {});
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
+        ],
+      ),
+    );
   }
 }
