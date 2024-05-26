@@ -14,6 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _numberTwoTEControler = TextEditingController();
   double _result = 0;
 
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,73 +26,96 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: _numberOneTEContcroler,
-              decoration: const InputDecoration(
-                hintText: 'Number One',
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            TextField(
-              controller: _numberTwoTEControler,
-              decoration: const InputDecoration(
-                hintText: 'Number Two',
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          double numOne = double.tryParse(
-                                  _numberOneTEContcroler.text.trim()) ??
-                              0;
-                          double numTwo = double.tryParse(
-                                  _numberTwoTEControler.text.trim()) ??
-                              0;
-                          _result = add(numOne, numTwo);
-                          setState(() {});
-                        },
-                        child: const Text('Add'))),
-                const SizedBox(
-                  width: 8,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: _numberOneTEContcroler,
+                decoration: const InputDecoration(
+                  hintText: 'Number One',
                 ),
-                Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          double numOne = double.tryParse(
-                                  _numberOneTEContcroler.text.trim()) ??
-                              0;
-                          double numTwo = double.tryParse(
-                                  _numberTwoTEControler.text.trim()) ??
-                              0;
-                          _result = subs(numOne, numTwo);
-                          setState(() {});
-                        },
-                        child: const Text('Sum'))),
-                const SizedBox(
-                  width: 8,
+                validator: (String? value) {
+                  String v = value ?? '';
+                  if (v.isEmpty) {
+                    return 'Enter number one';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: _numberTwoTEControler,
+                decoration: const InputDecoration(
+                  hintText: 'Number Two',
                 ),
-                Expanded(
-                    child: ElevatedButton(
-                        onPressed: clear, child: const Text('Clear'))),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-              'Result: $_result',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            )
-          ],
+                validator: (String? value) {
+                  String v = value ?? '';
+                  if (v.isEmpty) {
+                    return 'Enter number two';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              double numOne = double.tryParse(
+                                      _numberOneTEContcroler.text.trim()) ??
+                                  1;
+                              double numTwo = double.tryParse(
+                                      _numberTwoTEControler.text.trim()) ??
+                                  1;
+                              _result = add(numOne, numTwo);
+                              setState(() {});
+                            }
+                          },
+                          child: const Text('Add'))),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              double numOne = double.tryParse(
+                                      _numberOneTEContcroler.text.trim()) ??
+                                  1;
+                              double numTwo = double.tryParse(
+                                      _numberTwoTEControler.text.trim()) ??
+                                  1;
+                              _result = subs(numOne, numTwo);
+                              setState(() {});
+                            }
+                          },
+                          child: const Text('Subs'))),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: clear, child: const Text('Clear'))),
+                ],
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Result: $_result',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
         ),
       ),
     );
