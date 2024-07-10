@@ -11,6 +11,9 @@ class AddTodoListScreen extends StatefulWidget {
 
 class _AddTodoListScreenState extends State<AddTodoListScreen> {
   GlobalKey<FormState>_formKey = GlobalKey<FormState>();
+  final TextEditingController _titleTEController= TextEditingController();
+  final TextEditingController _descriptionTEController= TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,8 @@ class _AddTodoListScreenState extends State<AddTodoListScreen> {
           child: Column(
             children: [
                TextFormField(
-                decoration: InputDecoration(
+                 controller: _titleTEController,
+                decoration: const InputDecoration(
                   hintText: 'Title',
                  ),
                  validator: (String? value) {
@@ -37,6 +41,7 @@ class _AddTodoListScreenState extends State<AddTodoListScreen> {
                ),
               const SizedBox(height: 16),
              TextFormField(
+               controller: _descriptionTEController,
                 maxLines: 5,
                 maxLength: 100,
                 decoration: const InputDecoration(
@@ -65,5 +70,11 @@ class _AddTodoListScreenState extends State<AddTodoListScreen> {
         ),
       ),
     );
+  }
+  @override
+  void despose(){
+    _titleTEController.dispose();
+    _descriptionTEController.dispose();
+    super.dispose();
   }
 }

@@ -7,9 +7,10 @@ class EditTodoScreen extends StatefulWidget {
   @override
   State<EditTodoScreen> createState() => _EditTodoScreenState();
 }
-
-class _EditTodoScreenState extends State<EditTodoScreen> {
-  GlobalKey<FormState>_formKey = GlobalKey<FormState>();
+ class _EditTodoScreenState extends State<EditTodoScreen> {
+  final GlobalKey<FormState>_formKey = GlobalKey<FormState>();
+  final TextEditingController _titleTEController= TextEditingController();
+  final TextEditingController _descriptionTEController= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,8 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                controller: _titleTEController,
+                decoration: const InputDecoration(
                   hintText: 'Title',
                 ),
                 validator: (String? value) {
@@ -36,6 +38,7 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                controller: _descriptionTEController,
                 maxLines: 5,
                 maxLength: 100,
                 decoration: const InputDecoration(
@@ -64,5 +67,11 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
         ),
       ),
     );
+  }
+  @override
+  void despose(){
+    _titleTEController.dispose();
+    _descriptionTEController.dispose();
+    super.dispose();
   }
 }

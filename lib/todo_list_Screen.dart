@@ -19,8 +19,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
         title: const Text('Todos'),
       ) ,
-      body:  ListView.builder(
-        itemCount: 10,
+      body:  ListView.separated(
+          itemCount: 10,
           itemBuilder: ( context, int index) {
           return ListTile(
             title: const Text('Todo Title'),
@@ -29,7 +29,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 children:[Text('Todo body'),Text('time')]),
             trailing: Wrap(
               children: [
-                IconButton(onPressed: (){}, icon:const Icon(Icons
+                IconButton(onPressed: (){
+                  showDeleteConfermationDialoge();
+                }, icon:const Icon(Icons
                     .delete_forever_outlined)),
                 IconButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:
@@ -43,6 +45,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
           );
         },
+        separatorBuilder: (context,index){
+            return Divider(
+              color: Colors.grey.shade400,
+            );
+        },
       ),
        floatingActionButton: FloatingActionButton(
          onPressed: (){
@@ -55,4 +62,24 @@ class _TodoListScreenState extends State<TodoListScreen> {
        ),
     );
   }
+  void showDeleteConfermationDialoge(){
+    showDialog(context: context, builder:(context){
+      return AlertDialog(
+        title: Text('Delete Todo'),
+        content: Text('Are you Sure to delete the todo'),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text
+            ('Cancel',style: TextStyle(color: Colors.green),)),
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text('Delete',
+            style: TextStyle(color: Colors.red),))
+        ],
+      );
+
+    });
+  }
 }
+
