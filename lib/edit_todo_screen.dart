@@ -1,21 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class AddTodoListScreen extends StatefulWidget {
-  const AddTodoListScreen({super.key});
+class EditTodoScreen extends StatefulWidget {
+  const EditTodoScreen({super.key});
 
   @override
-  State<AddTodoListScreen> createState() => _AddTodoListScreenState();
+  State<EditTodoScreen> createState() => _EditTodoScreenState();
 }
 
-class _AddTodoListScreenState extends State<AddTodoListScreen> {
+class _EditTodoScreenState extends State<EditTodoScreen> {
   GlobalKey<FormState>_formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Items'),
+        title: const Text('Edit Items'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -23,31 +22,31 @@ class _AddTodoListScreenState extends State<AddTodoListScreen> {
           key: _formKey,
           child: Column(
             children: [
-               TextFormField(
+              TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Title',
-                 ),
-                 validator: (String? value) {
-                   final v = value ?? '';
-                   if  (v.trim().isEmpty) {
-                     return 'Enter Your title';
-                   }
-                   return null;
-                 },
-               ),
+                ),
+                validator: (String? value) {
+                  final v = value ?? '';
+                  if  (v.trim().isEmpty) {
+                    return 'Enter Your title';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(height: 16),
-             TextFormField(
+              TextFormField(
                 maxLines: 5,
                 maxLength: 100,
                 decoration: const InputDecoration(
                   hintText: 'Description',
                 ),
-               validator: (String? value) {
-                 if (value?.trim().isEmpty ?? true) {
-                   return 'Enter Your Description';
-                 }
-                 return null;
-               },
+                validator: (String? value) {
+                  if (value?.trim().isEmpty ?? true) {
+                    return 'Enter Your Description';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -57,8 +56,8 @@ class _AddTodoListScreenState extends State<AddTodoListScreen> {
                       if(_formKey.currentState!.validate()){
                         Navigator.pop(context);
                       }
-          
-                    }, child: const Text('Add')),
+
+                    }, child: const Text('Update')),
               )
             ],
           ),

@@ -2,6 +2,8 @@ import 'package:first_flutter_project/add_new_todo_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'edit_todo_screen.dart';
+
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({super.key});
 
@@ -21,15 +23,20 @@ class _TodoListScreenState extends State<TodoListScreen> {
         itemCount: 10,
           itemBuilder: ( context, int index) {
           return ListTile(
-            title: Text('Todo Title'),
-            subtitle: Column(
+            title: const Text('Todo Title'),
+            subtitle: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
                 children:[Text('Todo body'),Text('time')]),
             trailing: Wrap(
               children: [
                 IconButton(onPressed: (){}, icon:const Icon(Icons
                     .delete_forever_outlined)),
-                IconButton(onPressed: (){}, icon:const Icon(Icons
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>const EditTodoScreen(),
+
+                  ));
+                }, icon:const Icon(Icons
                     .edit))
               ],
             ),
@@ -40,11 +47,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
        floatingActionButton: FloatingActionButton(
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(builder: (context)
-           =>AddTodoListScreen()));
+           =>const AddTodoListScreen()));
 
          },
          backgroundColor: Colors.amber,
-         child: Icon(Icons.add),
+         child: const Icon(Icons.add),
        ),
     );
   }
