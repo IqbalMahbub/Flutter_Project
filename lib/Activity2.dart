@@ -15,7 +15,7 @@ class Activity2 extends StatelessWidget {
           Text("Activity 2"),
         TextButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)
-          =>NavigationScreen()));
+          =>NavigationScreen("This is ac2 to nave")));
         }, child: Text("page 1"))]
       ),
     );

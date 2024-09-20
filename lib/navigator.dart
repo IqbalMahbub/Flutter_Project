@@ -3,12 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavigationScreen extends StatelessWidget {
-  const NavigationScreen({super.key});
+  String msg;
+ NavigationScreen(
+      this.msg,
+      {super.key}) {
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(title: Text("My app"),backgroundColor: Colors.blue,),
+      appBar: AppBar(title: Text(msg),backgroundColor: Colors.blue,),
       body: Column(
         children: [
           ElevatedButton(onPressed: (){
