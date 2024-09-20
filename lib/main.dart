@@ -1,7 +1,7 @@
-import 'package:first_flutter_project/todo_app.dart';
-import 'package:flutter/material.dart';
+import 'package:first_flutter_project/app.dart';
+import 'package:flutter/cupertino.dart';
 
 void main(){
-  runApp(const TodoApp());
+  runApp(const CRUDApp());
 }
 
