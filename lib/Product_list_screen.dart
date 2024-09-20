@@ -18,7 +18,8 @@ class ProductListScreen extends StatelessWidget {
        child: Scaffold(
             appBar:AppBar(
               backgroundColor: Colors.green,
-              leading: Icon(Icons.app_blocking),
+              leading: ElevatedButton(onPressed: () {Navigator.pop(context);  },
+              child: Icon(Icons.back_hand)),
               title: Text('My app',style: TextStyle(color:
             Colors.blue),),
             bottom: TabBar(
@@ -42,11 +43,9 @@ class ProductListScreen extends StatelessWidget {
                   profile(),
                   comment(),
                   rating(),
-
-
-
                 ],
               ),
+
        )
    );
   }

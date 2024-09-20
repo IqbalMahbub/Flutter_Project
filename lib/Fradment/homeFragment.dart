@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../Activity2.dart';
 
 class Home  extends StatelessWidget {
   const Home ({super.key});
@@ -7,8 +10,15 @@ class Home  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Home Fragment"),
+        child: TextButton( onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)
+          =>Activity2()));
+        },child: Text("Activity 2"),),
+        
+          
       ),
     );
   }
 }
+
+
